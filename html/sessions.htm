@@ -1,0 +1,76 @@
+<div class="row">
+    <!-- Left side -->
+    <div class="col-md-7">
+
+        <!-- Sessions -->
+        <div class="card">
+            <div class="header">
+                <h4>Sessions</h4>
+            </div>
+            <div class="content">
+                <div class="table-responsive table-full-width">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control"  placeholder="Search sessions" ng-model="cfg.filter.sessions.search"><br>                                                                   
+                    </div>
+                    <div class="col-md-8 btn-group btn-group">
+                        <button type="button" class="btn btn-info btn-fill" ng-click="cfg.filter.sessions.host = 'web1'">Web1</button>
+                        <button type="button" class="btn btn-success btn-fill" ng-click="cfg.filter.sessions.host = 'web2'">Web2</button> 
+                    </div>
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Host
+                            </th>
+                            <th>
+                                User agent
+                            </th>                          
+                        </thead>
+                        <tbody>
+                            <tr class="pointer" ng-repeat="x in sessions | orderBy:cfg.order.sessions | filter: cfg.filter.sessions.host | filter: cfg.filter.sessions.search" ng-click="selectSession(x)">
+                                <td>{{x.timestamp | date : 'yyyy-MM-dd'}}</td>
+                                <td>
+                                    <span class="label label-default">{{x.host}}</span>
+                                </td>
+                                <td>{{x.userAgent}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <!-- Right side -->
+    <div class="col-md-5">
+        <!-- Single session -->
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Single session</h4>
+            </div>
+            <div class="content">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <div class="row ticketDetails">
+                            <div class="col-md-12">
+                                <p>
+                                    {{ cfg.selected.session.timestamp | date : 'yyyy-MM-dd' }}
+                                    {{ cfg.selected.session.host }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row ticketDetails">
+                            <div class="col-md-12">
+                                <p>
+                                    <span class="label label-default">{{ cfg.selected.session.host }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+.logo{
+	max-width: 200px;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.ticketDetails div p {
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.ticketDescription {
+	white-space: pre-wrap;
+	font-size: 14px;
+}
+
+@media screen and (max-width: 320px) {
+  /* Rules when screen is up to 320px wide */
+
+}
+
+@media screen and (min-width: 321px) and (max-width: 768px) {
+  /* Rules when screen is between 321px and 768px wide */
+
+}
+
+@media screen and (min-width: 769px) {
+  /* Rules when screen is wider than 768px */
+}
