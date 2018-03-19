@@ -48,7 +48,7 @@ app.controller("myCtrl", function($scope, $location, $http) {
   $scope.getData = function(resource) {
     var url = "api1/poc/" + resource;
 
-    $http.get(url, config)
+    $http.get(url)
     .then(function(response) {
         $scope[resource] = response.data;
     });
@@ -56,7 +56,7 @@ app.controller("myCtrl", function($scope, $location, $http) {
   $scope.postData = function(resource,data) {
     var url = "api1/poc/" + resource;
 
-    $http.post(url, data, config)
+    $http.post(url, data)
     .then(function(response) {
         $scope.getData(resource);
     });
