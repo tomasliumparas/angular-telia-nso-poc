@@ -4,11 +4,5 @@
     "version": "0.0.1",
     "dependencies": {
         "node-red-node-mongodb": "0.0.13"
-    },
-    "node-red": {
-        "settings": {
-            "flowFile": "flow.json",
-            "credentialsFile": "flow_cred.json"
-        }
     }
 }
