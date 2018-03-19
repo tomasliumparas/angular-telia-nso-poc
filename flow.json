@@ -7,19 +7,29 @@
         "info": ""
     },
     {
+        "id": "cb2ea5c1.768118",
+        "type": "mongodb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "27017",
+        "db": "db",
+        "name": ""
+    },
+    {
         "id": "2cab6f0b.2b845",
         "type": "http in",
         "z": "3ba7f303.9c0d1c",
         "name": "",
-        "url": "/sessions",
+        "url": "/poc/sessions",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 100,
+        "x": 160,
+        "y": 120,
         "wires": [
             [
-                "380f231d.1cd8dc"
+                "380f231d.1cd8dc",
+                "6c066841.3e0ad8"
             ]
         ]
     },
@@ -33,8 +43,8 @@
         "console": false,
         "tostatus": false,
         "complete": "true",
-        "x": 670,
-        "y": 160,
+        "x": 810,
+        "y": 320,
         "wires": []
     },
     {
@@ -44,8 +54,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 670,
-        "y": 100,
+        "x": 810,
+        "y": 120,
         "wires": []
     },
     {
@@ -56,12 +66,12 @@
         "func": "var hostname = msg.payload;\nvar response = {\n    timestamp: new Date(),\n    host: hostname,\n    userAgent: msg.req.headers[\"user-agent\"]\n}\n\nmsg.payload = response\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 470,
-        "y": 100,
+        "x": 610,
+        "y": 260,
         "wires": [
             [
-                "61fd81d0.32e8c",
-                "878bcd6d.46062"
+                "878bcd6d.46062",
+                "f18189.54d60e78"
             ]
         ]
     },
@@ -76,8 +86,8 @@
         "timer": "",
         "oldrc": false,
         "name": "",
-        "x": 280,
-        "y": 100,
+        "x": 440,
+        "y": 260,
         "wires": [
             [
                 "a1712cad.f33f8"
@@ -85,5 +95,97 @@
             [],
             []
         ]
+    },
+    {
+        "id": "6c066841.3e0ad8",
+        "type": "function",
+        "z": "3ba7f303.9c0d1c",
+        "name": "",
+        "func": "msg.payload = {};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "9366f1b2.151ac"
+            ]
+        ]
+    },
+    {
+        "id": "9366f1b2.151ac",
+        "type": "mongodb in",
+        "z": "3ba7f303.9c0d1c",
+        "mongodb": "cb2ea5c1.768118",
+        "name": "poc_sessions",
+        "collection": "poc_sessions",
+        "operation": "find",
+        "x": 600,
+        "y": 120,
+        "wires": [
+            [
+                "61fd81d0.32e8c"
+            ]
+        ]
+    },
+    {
+        "id": "f18189.54d60e78",
+        "type": "mongodb out",
+        "z": "3ba7f303.9c0d1c",
+        "mongodb": "cb2ea5c1.768118",
+        "name": "poc_sessions",
+        "collection": "poc_sessions",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 840,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "6a8f1cd6.3df8a4",
+        "type": "inject",
+        "z": "3ba7f303.9c0d1c",
+        "name": "",
+        "topic": "",
+        "payload": "{}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 540,
+        "wires": [
+            [
+                "1f7ad8f9.f856e7"
+            ]
+        ]
+    },
+    {
+        "id": "1f7ad8f9.f856e7",
+        "type": "mongodb out",
+        "z": "3ba7f303.9c0d1c",
+        "mongodb": "cb2ea5c1.768118",
+        "name": "poc_sessions",
+        "collection": "poc_sessions",
+        "payonly": true,
+        "upsert": false,
+        "multi": true,
+        "operation": "delete",
+        "x": 320,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "33094bd.7597eb4",
+        "type": "comment",
+        "z": "3ba7f303.9c0d1c",
+        "name": "Clear all sessions",
+        "info": "",
+        "x": 100,
+        "y": 480,
+        "wires": []
     }
 ]
