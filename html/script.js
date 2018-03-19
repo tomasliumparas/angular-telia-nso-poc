@@ -40,19 +40,6 @@ app.controller("myCtrl", function($scope, $location, $http) {
       $scope.sessions = response.data;
   });
 
-$scope.sessions = [
-  {
-    "timestamp": "2018-03-19T20:16:34.585Z",
-    "host": "Tomass-MacBook-Air\n",
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36"
-  },
-  {
-    "timestamp": "2018-03-19T20:16:56.273Z",
-    "host": "Tomass-MacBook-Air\n",
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36"
-  }
-]
-
   // 
   // Functions
   // ====================
