@@ -1,1 +1,89 @@
-[]
+[
+    {
+        "id": "3ba7f303.9c0d1c",
+        "type": "tab",
+        "label": "NSO POC App",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2cab6f0b.2b845",
+        "type": "http in",
+        "z": "3ba7f303.9c0d1c",
+        "name": "",
+        "url": "/sessions",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "380f231d.1cd8dc"
+            ]
+        ]
+    },
+    {
+        "id": "878bcd6d.46062",
+        "type": "debug",
+        "z": "3ba7f303.9c0d1c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 670,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "61fd81d0.32e8c",
+        "type": "http response",
+        "z": "3ba7f303.9c0d1c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a1712cad.f33f8",
+        "type": "function",
+        "z": "3ba7f303.9c0d1c",
+        "name": "",
+        "func": "var hostname = msg.payload;\nvar response = {\n    timestamp: new Date(),\n    host: hostname,\n    userAgent: msg.req.headers[\"user-agent\"]\n}\n\nmsg.payload = response\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 100,
+        "wires": [
+            [
+                "61fd81d0.32e8c",
+                "878bcd6d.46062"
+            ]
+        ]
+    },
+    {
+        "id": "380f231d.1cd8dc",
+        "type": "exec",
+        "z": "3ba7f303.9c0d1c",
+        "command": "hostname",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "a1712cad.f33f8"
+            ],
+            [],
+            []
+        ]
+    }
+]
