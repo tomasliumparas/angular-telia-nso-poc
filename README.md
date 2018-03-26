@@ -1,7 +1,7 @@
 angular-telia-nso-poc
 =====================
 
-NSO POC Node-red application
+NSO POC Node-red application.
 
 ### About
 
