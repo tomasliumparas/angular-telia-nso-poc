@@ -34,12 +34,6 @@ app.controller("myCtrl", function($scope, $location, $http) {
     }
   };
 
-  // Initial data retrieval
-  $http.get("api1/poc/sessions")
-    .then(function(response) {
-      $scope.sessions = response.data;
-  });
-
   // 
   // Functions
   // ====================
@@ -51,6 +45,9 @@ app.controller("myCtrl", function($scope, $location, $http) {
     $http.get(url)
     .then(function(response) {
         $scope[resource] = response.data;
+
+        // Store last resource element
+        $scope.last = response.data[response.data.length -1];
     });
   };
   $scope.postData = function(resource,data) {
@@ -61,6 +58,9 @@ app.controller("myCtrl", function($scope, $location, $http) {
         $scope.getData(resource);
     });
   };
+
+  // Initial data retrieval
+  $scope.getData('sessions');
 
   // Routing
   $scope.go = function (path) {
