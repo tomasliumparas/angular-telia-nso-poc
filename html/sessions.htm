@@ -1,6 +1,23 @@
 <div class="row">
     <!-- Left side -->
     <div class="col-md-7">
+    <!-- Current sesison -->
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Served by</h4>
+            </div>
+            <div class="content">
+                <div class="thumbnail lastSession">
+                    <div class="caption">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <i class="pe-7s-medal"></i> {{ last.host }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Sessions -->
         <div class="card">
@@ -46,7 +63,7 @@
     <!-- Right side -->
     <div class="col-md-5">
         <!-- Single session -->
-        <div class="card">
+        <div class="card" ng-show="cfg.selected.session">
             <div class="header">
                 <h4 class="title">Single session</h4>
             </div>
