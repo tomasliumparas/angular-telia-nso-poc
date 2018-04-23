@@ -16,6 +16,16 @@
 	font-size: 14px;
 }
 
+.lastSession {
+    background-color: #FFA534;
+    font-size: 16px;
+    text-transform: uppercase;	
+}
+
+.lastSession .caption {
+	color: #FFFFFF;
+}
+
 @media screen and (max-width: 320px) {
   /* Rules when screen is up to 320px wide */
 
