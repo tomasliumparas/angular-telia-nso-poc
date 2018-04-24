@@ -10,7 +10,7 @@
         "id": "cb2ea5c1.768118",
         "type": "mongodb",
         "z": "",
-        "hostname": "10.10.23.10",
+        "hostname": "10.249.24.154",
         "port": "27017",
         "db": "db",
         "name": ""
